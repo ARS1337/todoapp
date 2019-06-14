@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './todo.css';
-// import update from 'react-addons-update';
 class Todo extends Component {
     constructor(props) {
         super(props)
@@ -28,7 +27,8 @@ class Todo extends Component {
            list:temp,
            current:"",
            id:idd
-       });
+       },()=>{console.log(idd,this.state.list)});
+       
     }
     
     clearCompleted(e){
@@ -49,38 +49,35 @@ class Todo extends Component {
         });
     }
 
+    // binder(event){
+    //     //binds enter to addTask function
+    //     let add=document.getElementById("task");
+    //     add.addEventListener("keyup",function(event){
+    //         if(event.keyCode===13){
+    //             event.preventDefault(); 
+    //             document.getElementById("task").click();
+    //         }
+    //     });
+    // }
+
     clearThis(e){
         let idd=e.target.name;
         console.log("id is "+idd)
-        // let temp=this.state.list.filter((i)=>{
-        //     console.log(" id is "+i[0])
-        //     return i[0]!==idd;
-        // });
-        let temp=this.state.list.slice();let a=0
-        for(let i=0;i<temp.length;i++){
-            if(temp[0]===idd){
-                a=i;
+        idd=Number(idd);
+        let temp=this.state.list.slice();
+        temp=temp.filter((i)=>{
+            if(i[0]!==idd){
+                return true;
             }
-        }
-        delete temp[a];
+        });
         temp=temp.filter((i)=>{
             return i!=="undefined";
         });
-        console.log(temp);
         this.setState({
             list:temp,
         });
         console.log("clearThis was called");
     }
-
-    // Done(e){
-    //     let idd=e.target.name;
-    //     let temp=this.state.list.slice();
-    //     temp[idd][2]=1;
-    //     this.setState({
-    //         list:temp
-    //     });
-    // }
 
     render() {
         //add an option to tick off the task.
@@ -90,16 +87,20 @@ class Todo extends Component {
             <div class="container">
                 <h3 class="title">TodoApp</h3>
                 <input type="text" onChange={e=>{this.handleChange(e)}} value={this.state.current}/>                
-                <input type="button" value="Add Task" class="add-task" onClick={e=>{this.addTask(e)}}/>
+                <input type="button" id="task" value="Add Task" class="add-task" onClick={e=>{this.addTask(e)}}/>
                 <input type="button" value="Clear completed Task" class="clear-completed-task" onClick={e=>{this.clearCompleted(e)}}/>
                 <div class="tasks">
                     <ul>
                     { 
                         this.state.list.map((i)=>{
                         return <li>
-                        <label name={i[0]}>{i[2]?"Done":">>>"}</label>
-                        <label id="Task">{i[1]}</label> 
+                        {/* <label name={i[0]}>{i[2]?"Done":">>>"}</label> */}
+                        <p>
+                        <label id="Task">{i[1]}&nbsp;   
                         <input id="Clear-btn"type="button" name={i[0]} onClick={(e)=>{this.clearThis(e)}} value="Clear"></input>
+                        </label>
+                        {"id is "+i[0]}
+                        </p>
                         </li>
                     })}
                     </ul>
@@ -111,11 +112,3 @@ class Todo extends Component {
 
 export default Todo;
 
-// lister(){
-    //     // console.log("called");  
-    //     this.state.list.map((i)=>{
-    //         // return i[1]?<li>{i+" "+ i[1]}</li>:<li>lol</li>
-    //         //only  rendering
-    //         return <li>{i}{i[1]}</li>
-    //     });
-    // }
