@@ -1,9 +1,13 @@
 .tasks ul li{
     text-align: center;
-    color:#ccc;
+    color:black;
+    list-style: none;
+    font-family: "Comic Sans MS", cursive, sans-serif;
+    font-size: 1em;
     
 }
 .tasks ul li input[type="button"]{
-    background:darkgray;
+    background:coral;
     font-style: Bold;
+    border:2px solid red;
 }
