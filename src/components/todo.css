@@ -1,0 +1,9 @@
+.tasks ul li{
+    text-align: center;
+    color:#ccc;
+    
+}
+.tasks ul li input[type="button"]{
+    background:darkgray;
+    font-style: Bold;
+}
