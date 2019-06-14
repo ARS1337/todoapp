@@ -1,13 +1,41 @@
-.tasks ul li{
+.title{
+    color: rgb(255, 145, 0);
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+body{
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+.container{
+    padding:5%;
+    align-content: center;
+}
+ul{
+    list-style: none;
+}
+ul li {
+    align-content: center;
+}
+.container input{
+    margin:0.5%;
+    padding:1%;
+    font-weight:bold;
+    border:1px solid black;
+}
+.container input[type="text"]{
+    padding:1%;
+    margin:0.5%;
+}
+.task{
+    padding:0;
+    margin:0;
     text-align: center;
     color:black;
     list-style: none;
     font-family: "Comic Sans MS", cursive, sans-serif;
-    font-size: 1em;
-    
+    font-size: 1em; 
+    float:left;
 }
-.tasks ul li input[type="button"]{
-    background:coral;
-    font-style: Bold;
-    border:2px solid red;
+.tasks ul li span input{
+    padding: 0.5%;
 }
