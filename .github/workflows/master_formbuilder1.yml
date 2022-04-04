@@ -52,5 +52,5 @@ jobs:
         with:
           app-name: 'FormBuilder1'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_084351E8B0D74BCF8D657A13558068A5 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_A6ED31CA6399487CB09560504EDB3B3C }}
           package: .
